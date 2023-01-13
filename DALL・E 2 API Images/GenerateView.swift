@@ -25,7 +25,7 @@ struct GenerateView: View {
             Form{
                 HStack{
                     Spacer()
-                    AsyncImage(url: URL(string: "www.google.com")) { image in
+                    AsyncImage(url: viewModel.imageURL) { image in
                         image
                             .resizable()
                             .scaledToFit()
