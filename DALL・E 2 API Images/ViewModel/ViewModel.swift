@@ -24,10 +24,6 @@ final class ViewModel: ObservableObject {
         }
     }
     
-    func printKey(){
-        print(api_key)
-    }
-    
     @Published var imageURL: URL?
     @Published var isLoading: Bool = false
     
@@ -43,7 +39,7 @@ final class ViewModel: ObservableObject {
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "POST"
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        urlRequest.addValue(api_key, forHTTPHeaderField: "Authorization")
+        urlRequest.addValue("Bearer \(api_key)", forHTTPHeaderField: "Authorization")
         
         let dictionary: [String: Any] = [
             "n": 1,
@@ -67,7 +63,7 @@ final class ViewModel: ObservableObject {
                 }
                 
                 self.imageURL = URL(string: firstModel.url)
-//                print(self.imageURL ?? "No imageURL")
+                print(self.imageURL ?? "No imageURL")
             }
         } catch {
             print(error.localizedDescription)
