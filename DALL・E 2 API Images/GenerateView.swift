@@ -62,6 +62,7 @@ struct GenerateView: View {
                         if previousPrompt == text {
                             promptAlert = true
                         } else {
+                            viewModel.imageURL = nil
                             Task{
                                 await viewModel.generateImage(withText: text)
                             }
@@ -76,7 +77,6 @@ struct GenerateView: View {
                     
                     Button{
                         viewModel.saveImageGallery()
-                        saveAlert = !saveAlert
                     } label: {
                         Image(systemName: "square.and.arrow.down")
                     }
@@ -98,7 +98,7 @@ struct GenerateView: View {
         .onTapGesture {
             hideKeyboard()
         }
-        .alert("Now you can find this image in the galley", isPresented: $saveAlert) {
+        .alert("Now you can find this image in the galley", isPresented: $viewModel.saved) {
             Button("OK", role: .cancel){}
         }
         .alert(isPresented: $promptAlert) {
@@ -116,6 +116,7 @@ struct GenerateView: View {
             )
             }
         }
+
 }
 
 struct GenerateView_Previews: PreviewProvider {

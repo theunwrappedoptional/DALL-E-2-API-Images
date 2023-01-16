@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-final class ViewModel: ObservableObject {
+final class ViewModel: NSObject, ObservableObject {
     private let urlSession: URLSession
     
     private var api_key: String {
@@ -26,6 +26,7 @@ final class ViewModel: ObservableObject {
     
     @Published var imageURL: URL?
     @Published var isLoading: Bool = false
+    @Published var saved:Bool = false
     
     init(urlSession: URLSession = URLSession.shared) {
         self.urlSession = urlSession
@@ -71,7 +72,7 @@ final class ViewModel: ObservableObject {
     }
     
     func saveImageGallery() {
-        guard let imageURL = imageURL else {
+        guard let imageURL = self.imageURL else {
             return
         }
         
@@ -79,8 +80,18 @@ final class ViewModel: ObservableObject {
             let data = try! Data(contentsOf: imageURL)
             DispatchQueue.main.async {
                 let image = UIImage(data: data)!
-                UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+                UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.saveError), nil)
             }
         }
     }
+    
+    @objc func saveError(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if error != nil {
+            print("Error while saving")
+        } else {
+            saved = true
+            print("Successfully saved")
+        }
+    }
+
 }
