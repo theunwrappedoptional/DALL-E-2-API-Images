@@ -25,31 +25,39 @@ struct GenerateView: View {
             Form{
                 HStack{
                     Spacer()
-                    AsyncImage(url: viewModel.imageURL) { image in
-                        image
-                            .resizable()
-                            .scaledToFit()
-                    } placeholder: {
-                        VStack{
-                            if !viewModel.isLoading {
-                                Image(systemName: "photo.on.rectangle.angled")
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 50, height: 50)
-                            } else {
-                                ProgressView()
-                                    .padding(.bottom, 12)
-                                Text("Generating image...")
-                                    .multilineTextAlignment(.center)
-                            }
+                    
+                    AsyncImage(url: viewModel.imageURL,
+                               transaction: Transaction(animation: .spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0.25))) { phase in
+                        if let image = phase.image {
+                            image
+                                .resizable()
+                                .scaledToFit()
+                        } else if phase.error != nil {
+                            Color.red
+                        } else {
+                            VStack{
+                               if !viewModel.isLoading {
+                                   Image(systemName: "photo.on.rectangle.angled")
+                                       .resizable()
+                                       .scaledToFill()
+                                       .frame(width: 50, height: 50)
+                               } else {
+                                   ProgressView()
+                                       .padding(.bottom, 12)
+                                   Text("Generating image...")
+                                       .multilineTextAlignment(.center)
+                               }
+                           }
                         }
                     }
+
                     .frame(width:300, height:300, alignment: .center)
+                    
                     Spacer()
                 }
                 
                 VStack(alignment: .leading) {
-                    Text("Desribe the image that you want to generate")
+                    Text("Describe the image that you want to generate")
                         .foregroundColor(.gray)
                         .font(.caption)
                     TextField("A man with a dog in a corn field at dawn", text: $text, axis: .vertical)
@@ -81,7 +89,7 @@ struct GenerateView: View {
                         Image(systemName: "square.and.arrow.down")
                     }
                     .buttonStyle(.borderedProminent)
-                    .disabled(viewModel.imageURL == nil)
+                    .disabled(viewModel.imageURL == nil || viewModel.isLoading)
                     .padding(.vertical)
                     
                     Button("Reset") {
@@ -90,7 +98,7 @@ struct GenerateView: View {
                     }
                     .tint(.red)
                     .buttonStyle(.borderedProminent)
-                    .disabled(viewModel.isLoading)
+                    .disabled(viewModel.isLoading || text.isEmpty)
                     .padding(.vertical, 12)
                 }
             }
