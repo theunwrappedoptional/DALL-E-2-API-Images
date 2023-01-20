@@ -36,16 +36,23 @@ struct GenerateView: View {
                             Color.red
                         } else {
                             VStack{
-                               if !viewModel.isLoading {
-                                   Image(systemName: "photo.on.rectangle.angled")
-                                       .resizable()
-                                       .scaledToFill()
-                                       .frame(width: 50, height: 50)
+                                if viewModel.isLoading {
+                                    ProgressView()
+                                        .padding(.bottom, 12)
+                                    Text("Generating image...")
+                                        .multilineTextAlignment(.center)
                                } else {
-                                   ProgressView()
-                                       .padding(.bottom, 12)
-                                   Text("Generating image...")
-                                       .multilineTextAlignment(.center)
+                                   if viewModel.imageURL != nil {
+                                       ProgressView()
+                                           .padding(.bottom, 12)
+                                       Text("Generating image...")
+                                           .multilineTextAlignment(.center)
+                                   } else {
+                                       Image(systemName: "photo.on.rectangle.angled")
+                                           .resizable()
+                                           .scaledToFill()
+                                           .frame(width: 50, height: 50)
+                                   }
                                }
                            }
                         }
@@ -80,7 +87,7 @@ struct GenerateView: View {
                             Text("🪄 Generate Image")
                         }
                         .buttonStyle(.borderedProminent)
-                        .disabled(viewModel.isLoading || text.isEmpty)
+                        .disabled(text.isEmpty || viewModel.isLoading )
                         .padding(.vertical)
                     
                     Button{
@@ -89,7 +96,7 @@ struct GenerateView: View {
                         Image(systemName: "square.and.arrow.down")
                     }
                     .buttonStyle(.borderedProminent)
-                    .disabled(viewModel.imageURL == nil || viewModel.isLoading)
+                    .disabled(viewModel.imageURL == nil)
                     .padding(.vertical)
                     
                     Button("Reset") {
@@ -98,7 +105,7 @@ struct GenerateView: View {
                     }
                     .tint(.red)
                     .buttonStyle(.borderedProminent)
-                    .disabled(viewModel.isLoading || text.isEmpty)
+                    .disabled(viewModel.imageURL == nil)
                     .padding(.vertical, 12)
                 }
             }
