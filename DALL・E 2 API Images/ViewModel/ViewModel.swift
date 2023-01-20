@@ -58,18 +58,16 @@ final class ViewModel: NSObject, ObservableObject {
             let model = try JSONDecoder().decode(ModelResponse.self, from: data)
             
             DispatchQueue.main.async {
-                
+ 
                 guard let firstModel = model.data.first else {
                     return
                 }
                 
                 self.imageURL = URL(string: firstModel.url)
                 print(self.imageURL ?? "No imageURL")
-            }
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 self.isLoading = false
             }
+            
         } catch {
             print(error.localizedDescription)
         }
