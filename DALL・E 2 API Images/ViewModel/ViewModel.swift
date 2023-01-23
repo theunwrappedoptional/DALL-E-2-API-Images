@@ -13,12 +13,12 @@ final class ViewModel: NSObject, ObservableObject {
     
     private var api_key: String {
         get {
-          guard let filePath = Bundle.main.path(forResource: "OpenAI-info", ofType: "plist") else {
+          guard let filePath = Bundle.main.path(forResource: "OpenAI-Info", ofType: "plist") else {
             fatalError("Couldn't find file 'OpenAI-info.plist'.")
           }
           let plist = NSDictionary(contentsOfFile: filePath)
           guard let value = plist?.object(forKey: "API_KEY") as? String else {
-            fatalError("Couldn't find key 'API_KEY' in 'OpenAI-info.plist'.")
+            fatalError("Couldn't find key 'API_KEY' in 'OpenAI-Info.plist'.")
           }
           return value
         }
