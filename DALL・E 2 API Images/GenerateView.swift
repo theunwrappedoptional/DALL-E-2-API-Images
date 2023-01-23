@@ -45,7 +45,7 @@ struct GenerateView: View {
                                    if viewModel.imageURL != nil {
                                        ProgressView()
                                            .padding(.bottom, 12)
-                                       Text("Generating image...")
+                                       Text("Almost ready...")
                                            .multilineTextAlignment(.center)
                                    } else {
                                        Image(systemName: "photo.on.rectangle.angled")
