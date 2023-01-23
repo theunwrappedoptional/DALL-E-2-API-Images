@@ -15,7 +15,7 @@
 		541E7E1229700524005E01D2 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541E7E1129700524005E01D2 /* ViewExtension.swift */; };
 		541E7E17297005C5005E01D2 /* GenerateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541E7E16297005C5005E01D2 /* GenerateView.swift */; };
 		541E7E1929700F7D005E01D2 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541E7E1829700F7D005E01D2 /* ViewModel.swift */; };
-		54C262132971AA0A00AA6F43 /* OpenAI-info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54C262122971AA0A00AA6F43 /* OpenAI-info.plist */; };
+		54C262132971AA0A00AA6F43 /* OpenAI-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54C262122971AA0A00AA6F43 /* OpenAI-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,7 +28,8 @@
 		541E7E1129700524005E01D2 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		541E7E16297005C5005E01D2 /* GenerateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateView.swift; sourceTree = "<group>"; };
 		541E7E1829700F7D005E01D2 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		54C262122971AA0A00AA6F43 /* OpenAI-info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OpenAI-info.plist"; sourceTree = "<group>"; };
+		546E4682297E89D100A886FB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		54C262122971AA0A00AA6F43 /* OpenAI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OpenAI-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +46,7 @@
 		541E7DF429700423005E01D2 = {
 			isa = PBXGroup;
 			children = (
+				546E4682297E89D100A886FB /* README.md */,
 				541E7DFF29700424005E01D2 /* DALL・E 2 API Images */,
 				541E7DFE29700424005E01D2 /* Products */,
 			);
@@ -68,7 +70,7 @@
 				541E7E10297004E7005E01D2 /* ViewModel */,
 				541E7E0629700425005E01D2 /* Preview Content */,
 				541E7E0429700425005E01D2 /* Assets.xcassets */,
-				54C262122971AA0A00AA6F43 /* OpenAI-info.plist */,
+				54C262122971AA0A00AA6F43 /* OpenAI-Info.plist */,
 			);
 			path = "DALL・E 2 API Images";
 			sourceTree = "<group>";
@@ -158,7 +160,7 @@
 			files = (
 				541E7E0829700425005E01D2 /* Preview Assets.xcassets in Resources */,
 				541E7E0529700425005E01D2 /* Assets.xcassets in Resources */,
-				54C262132971AA0A00AA6F43 /* OpenAI-info.plist in Resources */,
+				54C262132971AA0A00AA6F43 /* OpenAI-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
