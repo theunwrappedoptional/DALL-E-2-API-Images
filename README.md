@@ -8,7 +8,7 @@
 ## OpenAI API Image Generation - iOS App
 
 This is an **experimental iOS App** that make use of the **OpenAI API** to generate images.
-The app allows the user to generate an image from a description.
+The app allows the user to generate an image from a description and save it to the Photo Library.
 
 ## Getting Started
 
