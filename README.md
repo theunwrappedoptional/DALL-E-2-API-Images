@@ -1,6 +1,11 @@
 # DALL・E 2 API Images
 
-## iOS OpenAI Image Generator App Experiment
+<p>
+    <img src="https://img.shields.io/badge/iOS-16.0+-blue.svg" />
+    <img src="https://img.shields.io/badge/Swift-5.6-brightgreen.svg" />
+</p>
+
+## OpenAI API Image Generation - iOS App
 
 This is an **experimental iOS App** that make use of the **OpenAI API** to generate images.
 The app allows the user to generate an image from a description.
